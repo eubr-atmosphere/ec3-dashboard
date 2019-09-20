@@ -1,0 +1,19 @@
+system front (
+    cpu.count>=#CPU_FRONT# and
+    memory.size>=#MEM_FRONT# and
+    disk.0.os.name='linux' and
+    disk.0.os.flavour='ubuntu' and
+    disk.0.image.url = 'fbw://fogbow-ubuntu-no-apt-daily.service' and
+    ec3aas.username='#USERID#'
+)
+
+system wn (
+    ec3_max_instances = #INSTANCES# and
+    ec3_node_type = 'wn' and
+    cpu.arch='x86_64' and
+    cpu.count>=#CPU_WN# and
+    memory.size>=#MEM_WN# and
+    disk.0.os.name='linux' and
+    disk.0.image.url = 'fbw://fogbow-ubuntu-no-apt-daily.service'
+)
+
