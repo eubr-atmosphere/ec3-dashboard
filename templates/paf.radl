@@ -1,0 +1,42 @@
+description paf (
+    kind = 'component' and
+    short = 'Privacy Assessment Forms' and
+    content = 'A tool that applies the GDPR and LGPD legislations to a dataset.
+
+Webpage: https://github.com/eubr-atmosphere/paf-yaml'
+)
+
+network public (
+  outbound = 'yes' and
+  #PAF port
+  outports contains '31111/tcp'
+)
+
+configure paf (
+@begin
+    - name: Download paf-yaml repo
+      git:
+        repo: 'https://github.com/eubr-atmosphere/paf-yaml.git'
+        dest: /var/tmp/paf
+        recursive: yes
+        force: yes
+        version: master
+
+#    - name: Modify Lemonade auth token
+#      lineinfile:
+#        path: /var/tmp/lemonade/setup.sh
+#        regexp: 'AUTH_TOKEN=9740600'
+#        line: 'AUTH_TOKEN=7850561'
+
+    - name: deploy PAF
+      command: kubectl apply -f /var/tmp/paf/privacy-assessment-forms.yaml
+
+@end
+)
+
+configure front (
+@begin
+  - tasks:
+    - include: paf.yml
+@end
+)

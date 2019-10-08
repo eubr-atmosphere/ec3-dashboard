@@ -1,0 +1,39 @@
+description vallum (
+    kind = 'component' and
+    short = 'Storage service of ATMOSPHERE' and
+    content = 'Storage service of ATMOSPHERE.
+
+Webpage: https://github.com/eubr-atmosphere/Storage_k8s_apps'
+)
+
+network public (
+  outbound = 'yes'
+)
+
+configure vallum (
+@begin
+    - name: Download storage-on-k8s repo
+      git:
+        repo: 'https://github.com/eubr-atmosphere/Storage_k8s_apps.git'
+        dest: /var/tmp/vallum
+        recursive: yes
+        force: yes
+        version: master
+
+    - name: deploy Hadoop master
+      command: kubectl create -f /var/tmp/vallum/hadoop-master.yaml
+
+    - name: deploy Hadoop worker
+      command: kubectl create -f /var/tmp/vallum/hadoop-worker.yaml
+
+    - name: deploy Vallum
+      command: kubectl create -f /var/tmp/vallum/vallum.yaml
+@end
+)
+
+configure front (
+@begin
+  - tasks:
+    - include: vallum.yml
+@end
+)
