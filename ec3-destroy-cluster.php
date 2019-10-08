@@ -44,30 +44,31 @@ if($_POST){
         exit("No password parameter specified.");
     }
     
+    $auth_file = "/tmp/auth_" .$clustername;
+
+    
     /*if (isset($_POST['domain-fogbow-delete'])) {
         $domain = $_POST['domain-fogbow-delete'];
     } else {
         exit("No domain parameter specified.");
-    }*/
-    $domain = "d";
+    }
     
-    /*if (isset($_POST['project-fogbow-delete'])) {
+    if (isset($_POST['project-fogbow-delete'])) {
         $projectID = $_POST['project-fogbow-delete'];
     } else {
         exit("No project ID parameter specified.");
     }*/
-    $projectID = "p";
     
     //Obtain the token calling the "Fogbow_API" script
-    $token = obtain_token($username, $password, $domain, $projectID);
+    /*$token = obtain_token($user, $pass, $domain, $projectID);
     if ($token == ' '){
         echo 'Found problems trying to obtain a valid token from the server.';
         exit(1);
-    }
+    }*/
     
     //$clustername = $clustername . "__" . hash('md5', $token);
 
-    if($token!=""){
+    /*if($token!=""){
         //$auth_file = "/tmp/auth_" .substr($clustername, 8);
         $auth_file = "/tmp/auth_" .$clustername;
         
@@ -127,7 +128,7 @@ if($_POST){
         fclose($gestor);
     } else {
         exit("Error contacting server.");
-    }
+    }*/
 
     // llamamos a EC3 para eliminar el cluster
     $ec3_log_file = "/tmp/ec3_del_". $clustername;

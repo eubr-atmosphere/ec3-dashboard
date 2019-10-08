@@ -341,8 +341,8 @@
 
             <!-- Step 1 Software packages -->
             <div class="wizard-card wizard-card-overlay" data-cardname="swpkg-fogbow">
-                <h3>Cluster type</h3>
-                <p>
+                <h3>Software Packages</h3>
+<!--                <p>
                     What type of cluster do you want to deploy? 
                 </p>
                 </br>
@@ -352,9 +352,33 @@
                             <option value=""></option>
                             <option value="kubernetes">Kubernetes + Jupyter notebook</option>
                             <option value="lemonade">Kubernetes + LEMONADE</option>
+                            <option value="lemonadegpu">Kubernetes + LEMONADE + GPUs</option>
+                            <option value="kubernetesgpu">Kubernetes + Jupyter notebook + GPUs</option>
+                            <option value="kubernetesvallum">Kubernetes + LEMONADE + Vallum</option>
+                            <option value="kubernetesgpuvallum">Kubernetes + LEMONADE + GPUs + Vallum</option>
                         </select>
                     </div>
+                </div> -->
+                <div class="wizard-input-section">
+                    <p>
+                        Please choose the software packages you'd like EC3 to
+                        install in your cluster. They will be automatically installed and configured.
+                    </p>
+
+                    <div class="fogbow col-sm-12" style="margin-bottom:15px;">
+                        <p style="margin-bottom:0px; margin-top:5px;">Cluster utilities:</p>
+                        <div class="row">
+                            <div class="col-sm-4"><input type="checkbox" value="lemonade" name="lemonade" id="lemonade" title="Configure a shared file system"/> LEMONADE </div>
+                            <div class="col-sm-4"><input type="checkbox" value="tma" name="tma" id="tma" title="An open-source tool to deploy applications inside software containers"/> TMA </div>
+                            <div class="col-sm-4"><input type="checkbox" value="vallum" name="vallum" id="vallum" title="Application that implements virtual private network (VPN) techniques"/> Vallum </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4"><input type="checkbox" value="paf" name="paf" id="paf" title="A program to generate two- and three-dimensional plots"/> PAF </div>
+                            <div class="col-sm-4"><input type="checkbox" value="jupyter" name="jupyter" id="jupyter" title="An open-source web server and servlet container"/> Jupyter </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="wizard-input-section">
                     <p>
                         Optionally you can provide an URL to your YAML files to be deployed in Kubernetes:
@@ -376,42 +400,7 @@
                     </div>
                 </div>
                     
-
-                <!--<div class="wizard-input-section">
-                    <p>
-                        Please choose the software packages you'd like EC3 to
-                        install in your cluster. They will be automatically installed and configured.
-                    </p>
-
-                    <div class="fogbow col-sm-12">
-                        <p style="margin-bottom:0px; margin-top:5px;">Cluster utilities:</p>
-                        <div class="row">
-                            <div class="col-sm-4"><input type="checkbox" value="nfs" name="nfs" id="nfs" title="Configure a shared file system"/> NFS </div>
-                            <div class="col-sm-4"><input type="checkbox" value="docker" name="docker" id="docker" title="An open-source tool to deploy applications inside software containers"/> Docker </div>
-                            <div class="col-sm-4"><input type="checkbox" value="openvpn" name="openvpn" id="openvpn" title="Application that implements virtual private network (VPN) techniques"/> OpenVPN </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-4"><input type="checkbox" value="marathon" name="marathon" id="marathon" title="A job scheduler for Mesos tasks (framework for Mesos)"/> Marathon </div>
-                            <div class="col-sm-4"><input type="checkbox" value="chronos" name="chronos" id="chronos" title="A batch job scheduler for Mesos tasks (framework for Mesos)"/> Chronos </div>
-                            <div class="col-sm-4"><input type="checkbox" value="maui" name="maui" id="maui" title="A job scheduler for use with Torque"/> Maui </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-4"><input type="checkbox" value="hadoop" name="hadoop" id="hadoop" title="A framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models"/> Hadoop </div>
-                            <div class="col-sm-4"><input type="checkbox" value="galaxy" name="galaxy" id="galaxy" title="Web-based platform for data intensive biomedical research. Recommended to install with Torque and NFS."/> Galaxy </div>
-                            <div class="col-sm-4"><input type="checkbox" value="extra_hd" name="extra_hd" id="extra_hd" title="Add a 100GB Extra HD to the cluster"/> 100GB Extra HD </div>
-                        </div>
-                        <p style="margin-bottom:0px; margin-top:10px;">Software utilities:</p>
-                        <div class="row">
-                            <div class="col-sm-4"><input type="checkbox" value="octave" name="octave" id="octave" title="A high-level programming language, primarily intended for numerical computations"/> Octave </div>
-                            <div class="col-sm-4"><input type="checkbox" value="gnuplot" name="gnuplot" id="gnuplot" title="A program to generate two- and three-dimensional plots"/> Gnuplot </div>
-                            <div class="col-sm-4"><input type="checkbox" value="tomcat" name="tomcat" id="tomcat" title="An open-source web server and servlet container"/> Tomcat </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-4"><input type="checkbox" value="namd" name="namd" id="namd" title="A parallel, object-oriented molecular dynamics code designed for high-performance simulation of large biomolecular systems"/> Namd </div>
-                        </div>
-                    </div>
-                </div>
-                <p style="padding-top:180px; padding-right:160px; margin-top:55px;">Is your favourite software not available? <a href="mailto:ec3@upv.es?Subject=[EC3]%20Unsupported%20Software" target="_top">Let us know!</a></p>-->
+                <!--<p style="padding-top:180px; padding-right:160px; margin-top:55px;">Is your favourite software not available? <a href="mailto:ec3@upv.es?Subject=[EC3]%20Unsupported%20Software" target="_top">Let us know!</a></p>-->
                 
             </div>
 
@@ -421,22 +410,22 @@
                 <h3>Provider Account</h3>
                 <div class="wizard-input-section">
                     <p>
-                        Username:
+                        Fogbow Username:
                     </p>
                     <div class="form-group">
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="user-fogbow" name="user-fogbow" placeholder="API key" data-validate="validateValue">
+                            <input type="text" class="form-control" id="user-fogbow" name="user-fogbow" placeholder="Your Fogbow user" data-validate="validateValue">
                         </div>
                     </div>
                 </div>
 
                 <div class="wizard-input-section">
                     <p>
-                        Password:
+                        Fogbow Password:
                     </p>
                     <div class="form-group">
                         <div class="col-sm-8">
-                            <input type="password" class="form-control" id="pass-fogbow" name="pass-fogbow" placeholder="secret key" data-validate="validateValue">
+                            <input type="password" class="form-control" id="pass-fogbow" name="pass-fogbow" placeholder="Your Fogbow password" data-validate="validateValue">
                         </div>
                     </div>
                 </div>
@@ -463,7 +452,7 @@
              </div>
             
             <!-- Step 3 - Operating System -->
-            <div class="wizard-card wizard-card-overlay" data-cardname="os-fogbow">
+            <!--<div class="wizard-card wizard-card-overlay" data-cardname="os-fogbow">
                 <h3>Operating System</h3>
 
                 <div class="wizard-input-section">
@@ -477,38 +466,78 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <!-- Step 4 instance characteristics -->
-            <div class="wizard-card" data-cardname="instance-details-fogbow">
+            <div class="wizard-card wizard-card-overlay" data-cardname="instance-details-fogbow">
                 <h3>Instance details</h3>
 
                 <div class="wizard-input-section">
                     <p>
-                        Frontend CPU and RAM memory (in MB) values:
+                        Frontend CPU and RAM memory:
                     </p>
-                    <div class="form-group">
+                    <select name="front-details" id="front-details" data-placeholder="--Select one--" style="width:350px;" class="form-control" data-validate="drop_down_validation">
+                        <option value=""></option>
+                        <option value="2;4096">2 CPU, 4GB RAM</option>
+                        <option value="2;8192">2 CPU, 8GB RAM</option>
+                        <option value="4;8192">4 CPU, 8GB RAM</option>
+                    </select>
+                    <!--<div class="form-group">
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="front-cpu-fogbow" name="front-cpu-fogbow" placeholder="frontend CPU" data-validate="validateNumber">
                         </div>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="front-mem-fogbow" name="front-mem-fogbow" placeholder="frontend memory" data-validate="validateNumber">
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 </br>
                 <div class="wizard-input-section">
                     <p>
-                        Working nodes CPU and RAM memory (in MB) values:
+                        Working node type 1 CPU/GPU and RAM memory:
                     </p>
-                    <div class="form-group">
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" id="wn-cpu-fogbow" name="wn-cpu-fogbow" placeholder="WN CPU" data-validate="validateNumber">
+                    <select name="wn1-details" id="wn1-details" data-placeholder="--Select one--" style="width:350px;" class="form-control" data-validate="drop_down_validation">
+                        <option value=""></option>
+                        <option value="2;4096">2 CPU, 4GB RAM</option>
+                        <option value="2;8192">2 CPU, 8GB RAM</option>
+                        <option value="4;8192">4 CPU, 8GB RAM</option>
+                        <option value="1;4096;g">1 GPU, 4GB RAM</option>
+                        <option value="2;4096;g">2 GPU, 4GB RAM</option>
+                        <option value="4;8192;g">4 GPU, 8GB RAM</option>
+                    </select>
+                    <!--<div class="form-group">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="wn-cpu-fogbow" name="wn-cpu-fogbow" placeholder="WN CPU/GPU" data-validate="validateNumber">
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-4">
                             <input type="text" class="form-control" id="wn-mem-fogbow" name="wn-mem-fogbow" placeholder="WN memory" data-validate="validateNumber">
                         </div>
-                    </div>
+                        <div class="col-sm-4">
+                            <input type="checkbox" value="sgx" name="sgx" id="sgx" title="Check this box if you need nodes with SGX support"/> SGX 
+                        </div>
+                    </div>-->
+                </div>
+                </br>
+                <div class="wizard-input-section">
+                    <p>
+                        Working node type 2 CPU/GPU and RAM memory:
+                    </p>
+                    <!--<div class="form-group">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="wn-cpu-fogbow" name="wn-cpu-fogbow" placeholder="WN CPU/GPU" data-validate="validateNumber">
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="wn-mem-fogbow" name="wn-mem-fogbow" placeholder="WN memory" data-validate="validateNumber">
+                        </div>
+                    </div>-->
+                    <select name="wn2-details" id="wn2-details" data-placeholder="--Select one--" style="width:350px;" class="form-control" data-validate="drop_down_validation">
+                        <option value=""></option>
+                        <option value="2;4096">2 CPU, 4GB RAM</option>
+                        <option value="2;8192">2 CPU, 8GB RAM</option>
+                        <option value="4;8192">4 CPU, 8GB RAM</option>
+                        <option value="2;4096;s">2 CPU, 4GB RAM, SGX support</option>
+                        <option value="4;8192;s">4 CPU, 8GB RAM, SGX support</option>
+                    </select>
                 </div>
             </div>
 
@@ -537,26 +566,41 @@
 
                 <div class="wizard-input-section">
                     <p>
-                        Introduce the maximum number of nodes of your cluster (without including the front-end node).
+                        Select the maximum number of nodes (type 1 and type 2) of your cluster:
                     </p>
-                    <p style="font-size:12px"> <em>
-                        Note that EC3 will initially provision only the front-end node and it will dynamically deploy additional working nodes as necessary. </em>
-                    </p>
-                    </br>
+
                     <div class="form-group">
-                        <div class="col-sm-6">
-                            <select type="text" class="form-control" id="nodes-fogbow" name="nodes-fogbow" placeholder="number of nodes" data-validate="validateNumber">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
+                        <div class="col-sm-7">
+                            <p> Number of nodes of type 1:</p>
+                        </div>
+                        <div class="col-sm-5">
+                            <select class="form-control" id="nodes-type1" name="nodes-type1" placeholder="--Type 1 working node--" data-validate="drop_down_validation">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
+                        </div>
+                        <div class="col-sm-7">
+                            <p> Number of nodes of type 2:</p>
+                        </div>
+                        <div class="col-sm-5">
+                            <select type="text" class="form-control" id="nodes-type2" name="nodes-type2" data-placeholder="--Type 2 working node--" data-validate="drop_down_validation">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12">
+                            </br>
+                            <p style="font-size:12px"> <em>
+                                Note that EC3 will initially provision only the front-end node and it will dynamically deploy additional working nodes as necessary. </em>
+                            </p>
                         </div>
                         <div class="col-sm-12">
                             </br>
@@ -641,7 +685,7 @@
                     </p>
                     <div class="form-group">
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="user-fogbow-delete" name="user-fogbow-delete" placeholder="API key" data-validate="validateValue">
+                            <input type="text" class="form-control" id="user-fogbow-delete" name="user-fogbow-delete" placeholder="Your Fogbow user" data-validate="validateValue">
                         </div>
                     </div>
                 </div>
@@ -651,7 +695,7 @@
                     </p>
                     <div class="form-group">
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="pass-fogbow-delete" name="pass-fogbow-delete" placeholder="secret key" data-validate="validateValue">
+                            <input type="password" class="form-control" id="pass-fogbow-delete" name="pass-fogbow-delete" placeholder="Your Fogbow password" data-validate="validateValue">
                         </div>
                     </div>
                 </div>
@@ -922,6 +966,12 @@
                 });
             });
             
+            var chk1 = $("input[type='checkbox'][value='paf']");
+            var chk2 = $("input[type='checkbox'][value='lemonade']");
+
+            chk1.on('change', function(){
+                chk2.prop('checked',this.checked);
+            });
             
             function drop_down_validation(el){
                 var name = el.val();
@@ -940,11 +990,22 @@
             function showDetails_Fogbow() {
                 var retValue = ' '
 
-                //obtener endpoint - Fijo y conocido
-                //var endpoint = $('#endpoint-fogbow').val();
+                //obtener el SW
+                var sw = '';
+                if( $('.fogbow.col-sm-12 #vallum').prop('checked') ) sw += "Vallum ";
+                if( $('.fogbow.col-sm-12 #lemonade').prop('checked') ) sw += "LEMONADE ";
+                if( $('.fogbow.col-sm-12 #paf').prop('checked') ) sw += "PAF ";
+                if( $('.fogbow.col-sm-12 #tma').prop('checked') ) sw += "TMA ";
+                if( $('.fogbow.col-sm-12 #jupyter').prop('checked') ) sw += "Jupyter ";
+         
+                if (sw == ''){
+                    sw +="Nothing selected"
+                }
                 
-                //var token = $('#token-fogbow').val();
-                //token = "*********";
+                //Obtener, si es el caso, los datos de github
+                var gitrepo = $('#github-fogbow').val();
+                var gitbranch = $('#branch-fogbow').val();
+                var gitfolder = $('#folder-fogbow').val();
                 
                 //obtener las credenciales
                 var user = $('#user-fogbow').val();
@@ -961,70 +1022,23 @@
                     projectID = "Not set";
                 }*/
 
-                //obtener la vmi seleccionada
-                var os = $('#vmi-fogbow option:selected').html();
 
                 //obtener las caracteristicas de las VMs
-                var front_cpu = $('#front-cpu-fogbow').val();
-                var front_mem = $('#front-mem-fogbow').val();
-                var wn_cpu = $('#wn-cpu-fogbow').val();
-                var wn_mem = $('#wn-mem-fogbow').val();;
+                var front = $('#front-details option:selected').text();
+                var wn_1 = $('#wn1-details option:selected').text();
+                var wn_2 = $('#wn2-details option:selected').text();
 
-                //obtener el LRMS seleccionado
-                //var lrms = $('#lrms-fogbow').val();
-
-                //obtener el SW
-                //var sw = '';
-                //if( $('.fogbow.col-sm-12 #clues').prop('checked') ) sw += "CLUES ";
-                //if( $('.fogbow.col-sm-12 #blcr').prop('checked') ) sw += "BLCR ";
-                //if( $('.fogbow.col-sm-12 #nfs').prop('checked') ) sw += "NFS ";
-                //if( $('.fogbow.col-sm-12 #ckptman').prop('checked') ) sw += "ckptman ";
-                //if( $('.fogbow.col-sm-12 #munge').prop('checked') ) sw += "Munge ";
-                //if( $('.fogbow.col-sm-12 #maui').prop('checked') ) sw += "Maui ";
-                //if( $('.fogbow.col-sm-12 #openvpn').prop('checked') ) sw += "OpenVPN ";
-                //if( $('.fogbow.col-sm-12 #galaxy').prop('checked') ) sw += "Galaxy ";
-                //if( $('.fogbow.col-sm-12 #extra_hd').prop('checked') ) sw += "100GB Extra HD ";
-                //if( $('.fogbow.col-sm-12 #galaxy-tools').prop('checked') ) sw += "Galaxy-tools";
-                //if( $('.fogbow.col-sm-12 #sshtun').prop('checked') ) sw += "SSH tunnels ";
-                //if( $('.fogbow.col-sm-12 #octave').prop('checked') ) sw += "Octave ";
-                //if( $('.fogbow.col-sm-12 #docker').prop('checked') ) sw += "Docker ";
-                //if( $('.fogbow.col-sm-12 #gnuplot').prop('checked') ) sw += "Gnuplot ";
-                //if( $('.fogbow.col-sm-12 #tomcat').prop('checked') ) sw += "Tomcat ";
-                //if( $('.fogbow.col-sm-12 #marathon').prop('checked') ) sw += "Marathon ";
-                //if( $('.fogbow.col-sm-12 #chronos').prop('checked') ) sw += "Chronos ";
-                //if( $('.fogbow.col-sm-12 #hadoop').prop('checked') ) sw += "Hadoop ";
-                //if( $('.fogbow.col-sm-12 #namd').prop('checked') ) sw += "Namd";
-
-                /*if (sw == ''){
-                    sw +="Nothing selected"
-                }
-
-                if (lrms == ''){
-                    lrms +="nothing selected"
-                }*/
-                
-                //obtener el tipo de cluster a desplegar
-                var clustertype = $('#cluster-fogbow').val();
-                if (clustertype == 'kubernetes'){
-                    clustertype = "Kubernetes + Jupyter notebook";
-                } else if (clustertype == 'lemonade'){
-                    clustertype = "Kubernetes + LEMONADE";
-                }
-                
-                //Obtener, si es el caso, los datos de github
-                var gitrepo = $('#github-fogbow').val();
-                var gitbranch = $('#branch-fogbow').val();
-                var gitfolder = $('#folder-fogbow').val();
 
                 //obtener el numero de nodos
-                var nodes = parseInt($('#nodes-fogbow').val());
+                var nodeswn1 = parseInt($('#nodes-type1').val());
+                var nodeswn2 = parseInt($('#nodes-type2').val());
                 
                 //obtener el nombre del cluster
                 var clustername = $('#cluster-name').val();
 
                 //retValue = "<div><b>Endpoint: </b>" + endpoint + "</div> <div><b>Token: </b>" + token + "</div>";
 
-                retValue = "<div> <b>Cluster type: </b>" + clustertype + "</div>";
+                retValue = "<div> <b>Software packages: </b>" + sw + "</div>";
                 
                 if(gitrepo != ''){
                     retValue += "<div> <b>Github repo: </b>" + gitrepo + "</div>";
@@ -1038,19 +1052,12 @@
                     retValue += "<div> <b>Github folder: </b>" + gitfolder + "</div>";
                 }
                 
-                if(os != ''){
-                    retValue += "<div> <b>OS VMI: </b>" + os + "</div>";
-                } else {
-                    retValue += "<div> <b>OS VMI: </b> nothing indicated</div>";
-                }
-                
                 retValue += "<div> <b> Username: </b>" + user + "</div> <div><b>Password: </b>" + pass + "</div>" +
                            //"<div> <b> Domain Name: </b>" + tennat + "</div> <div><b>Project ID: </b>" + projectID + "</div>" +
-                           "<div> <b>Frontend CPU: </b>" + front_cpu + "<b></div> <div>Frontend RAM memory: </b>" + front_mem + " </div>" +
-                           "<div> <b>Working nodes CPU: </b>" + wn_cpu + "<b></div> <div> Working nodes RAM memory: </b>" + wn_mem + " </div>" +
-                           //"<div> <b>Local Resource Management System: </b>" + lrms + "</div>" +
-                           //"<div> <b>Software packages: </b>" + sw + "</div>" +
-                           "<div> <b>Maximum number of nodes: </b>" + nodes + "</div>" + 
+                           "<div> <b>Frontend details: </b>" + front + "</div>" +
+                           "<div> <b>Working node 1 details: </b>" + wn_1 + "<b></div> <div> Working node 2 details: </b>" + wn_2 + " </div>" +
+                           "<div> <b>Maximum number of nodes (type 1): </b>" + nodeswn1 + "</div>" + 
+                           "<div> <b>Maximum number of nodes (type 2): </b>" + nodeswn2 + "</div>" + 
                            "<div> <b>Cluster name: </b>" + clustername + "</div>";
 
                 //Mostramos los datos recogidos al usuario
@@ -1167,7 +1174,7 @@
 
 
     <!-- Modal box to list clusters -->
-        <script type="text/javascript">
+    <!--    <script type="text/javascript">
 
         // Get the modal
         var modal = document.getElementById('myModal');
@@ -1291,7 +1298,7 @@
           }
         }
 
-        </script> 
+        </script> -->
 
 		
     <!-- Plugin JavaScript -->
@@ -1307,7 +1314,7 @@
     <script src="js/agency.js"></script>
 
     <!-- Logout behaviour -->
-    <script>
+<!--    <script>
 
     // Get the logout button 
     var btn = document.getElementById("logout");
@@ -1334,7 +1341,7 @@
     function redirection(){  
         window.location ="https://marketplace.egi.eu/42-applications-on-demand";
     }
-    </script>
+    </script> -->
 
 </body>
 
