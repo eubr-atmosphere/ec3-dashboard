@@ -61,6 +61,14 @@ function generate_hybrid_radl($front_cpu, $front_mem, $wn1_cpu, $wn1_mem, $nodes
     $zone_wn1 = $br_zone
     $zone_wn2 = $br_zone
     
+    //OS is now predefined:
+    //In Brazil:
+    //ubuntu-16.04: "33fee431-4d74-45e8-aaef-734c86e21840"
+    //ubuntu-16.04-sgx: e578a3e5-6936-4bad-9ef5-7f6827ddf548
+
+    //In UPV:
+    //Ubuntu 16.04: "877c4fad-34cf-4422-a565-8bb6e10c3bec"
+        
     $os_front = "33fee431-4d74-45e8-aaef-734c86e21840";
     $os_wn1 = "33fee431-4d74-45e8-aaef-734c86e21840";
     $os_wn2 = "33fee431-4d74-45e8-aaef-734c86e21840";       
@@ -310,16 +318,7 @@ if($_POST){
             echo 'Image SO not provided. Impossible to launch a cluster without these data. Please, enter the required information and try again.';
             exit(1);
         }*/
-        
-        //TODO: MOVE IT TO THE METHOD WHERE THE RADL IS BUILDT
-        //OS is now predefined:
-        //In Brazil:
-        //ubuntu-16.04: "33fee431-4d74-45e8-aaef-734c86e21840",
-        //ubuntu-16.04-sgx: e578a3e5-6936-4bad-9ef5-7f6827ddf548
-        
-        //In UPV:
-        //Ubuntu 16.04: "877c4fad-34cf-4422-a565-8bb6e10c3bec",
-        
+          
         $lrms = "kubernetes";
         
         /*$clustertype = (isset($_POST['cluster-fogbow']) ? $_POST['cluster-fogbow'] : "");      
