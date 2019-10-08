@@ -89,8 +89,7 @@ function generate_hybrid_radl($front_cpu, $front_mem, $wn1_cpu, $wn1_mem, $nodes
     fwrite($new_file, "    memory.size>=". $front_mem ."m and".PHP_EOL);
     fwrite($new_file, "    disk.0.os.name = 'linux' and".PHP_EOL);
     fwrite($new_file, "    disk.0.image.url = 'fbw://services-atm-prod.lsd.ufcg.edu.br/" .$os_front. "' and".PHP_EOL);
-    fwrite($new_file, "    availability_zone = '". $br_zone . "' and".PHP_EOL);
-    fwrite($new_file, "    disk.0.applications contains (name='ansible.modules.grycap.kubernetes')".PHP_EOL);
+    fwrite($new_file, "    availability_zone = '". $br_zone . "'".PHP_EOL);
     //fwrite($new_file, "    ec3aas.username = '".$user_sub."'".PHP_EOL);
     fwrite($new_file, ")".PHP_EOL);
 
@@ -105,8 +104,7 @@ function generate_hybrid_radl($front_cpu, $front_mem, $wn1_cpu, $wn1_mem, $nodes
     fwrite($new_file, "    memory.size>=". $wn1_mem ."m and".PHP_EOL);
     fwrite($new_file, "    disk.0.os.name = 'linux' and".PHP_EOL);
     fwrite($new_file, "    disk.0.image.url = 'fbw://services-atm-prod.lsd.ufcg.edu.br/" .$os_wn1. "' and".PHP_EOL);
-    fwrite($new_file, "    availability_zone = '". $zone_wn1 . "' and".PHP_EOL);
-    fwrite($new_file, "    disk.0.applications contains (name='ansible.modules.grycap.kubernetes')".PHP_EOL);
+    fwrite($new_file, "    availability_zone = '". $zone_wn1 . "'".PHP_EOL);
     fwrite($new_file, ")".PHP_EOL);
 
     fwrite($new_file, PHP_EOL);
@@ -120,8 +118,7 @@ function generate_hybrid_radl($front_cpu, $front_mem, $wn1_cpu, $wn1_mem, $nodes
     fwrite($new_file, "    memory.size>=". $wn2_mem ."m and".PHP_EOL);
     fwrite($new_file, "    disk.0.os.name = 'linux' and".PHP_EOL);
     fwrite($new_file, "    disk.0.image.url = 'fbw://services-atm-prod.lsd.ufcg.edu.br/" .$os_wn2. "' and".PHP_EOL);
-    fwrite($new_file, "    availability_zone = '". $zone_wn2 . "' and".PHP_EOL);
-    fwrite($new_file, "    disk.0.applications contains (name='ansible.modules.grycap.kubernetes')".PHP_EOL);
+    fwrite($new_file, "    availability_zone = '". $zone_wn2 . "'".PHP_EOL);
     fwrite($new_file, ")".PHP_EOL);
     
     fclose($new_file);
